@@ -35,13 +35,8 @@ function checkNumber(inputNumber){
         setText('.highscore', highscore);
         document.querySelector('.check').disabled = true;
     }else{
-        if(inputNumber > number){ // if still has the tries
-            setText('.message', 'Too high 📈');
-            setText('.score', --score);
-        }else{
-            setText('.message', 'Too low 📉');
-            setText('.score', --score);
-        }
+        setText('.message', inputNumber > number ? 'Too high 📈' : 'Too low 📉');
+        setText('.score', --score);
     }
     
 }
@@ -50,7 +45,6 @@ function checkNumber(inputNumber){
 function setText(className, value){
     document.querySelector(className).textContent = value;
 }
-
 
 function renderGame(){ // to init all game components 
     document.querySelector('body').style.backgroundColor = '#222';
@@ -61,5 +55,5 @@ function renderGame(){ // to init all game components
     document.querySelector('.guess').value = '';
     number = Math.floor(Math.random() * 20) + 1;
     document.querySelector('.check').disabled = false;
-    console.log(`[DEBUG] ${number}`); // FOR TEST
+   // console.log(`[DEBUG] ${number}`); // FOR TEST
 }
